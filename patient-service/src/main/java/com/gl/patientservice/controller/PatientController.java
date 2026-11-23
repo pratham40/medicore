@@ -24,9 +24,14 @@ public class PatientController {
 
     @PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST','PATIENT')")
     @PostMapping
-    public ResponseEntity<PatientResponse> register(@Valid @RequestBody PatientRequest request) {
+    public ResponseEntity<PatientResponse> register(@Valid @RequestBody PatientRequest request,
+                                                    @RequestHeader(value = "X-User-Id",required = false) Long userId,
+                                                    @RequestHeader(value = "X-User-Role",required = false) String role
+                                                    ) {
         log.info("register request");
-        PatientResponse response = patientService.register(request);
+
+        Long linkingUserId = "PATIENT".equals(role) ? userId : null;
+        PatientResponse response = patientService.register(request,linkingUserId);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(response);
     }

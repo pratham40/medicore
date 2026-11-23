@@ -25,11 +25,12 @@
         private final MapResponse mapResponse;
 
         @Transactional
-        public PatientResponse register(PatientRequest request) {
+        public PatientResponse register(PatientRequest request, Long linkingUserId) {
 
             log.info("In PatientService register");
 
             Patient patient = Patient.builder()
+                    .userId(linkingUserId)
                     .fullName(request.fullName())
                     .dateOfBirth(request.dateOfBirth())
                     .gender(request.gender())

@@ -21,8 +21,6 @@ public class JwtFilter extends OncePerRequestFilter {
         String userId = request.getHeader("X-User-ID");
         String role =  request.getHeader("X-User-Role");
 
-        System.out.println("User ID: " + userId);
-        System.out.println("User Role: " + role);
 
         if (userId == null || role == null || userId.isBlank()) {
             response.sendError(

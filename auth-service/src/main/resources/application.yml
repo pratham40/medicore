@@ -11,7 +11,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/medicore_auth_db
     username: postgres
-    password: Radhe
+    password: radhe
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
