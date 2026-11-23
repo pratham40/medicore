@@ -1,0 +1,33 @@
+# Server Configuration
+server:
+  port: 8082
+
+# Spring Configuration
+spring:
+  application:
+    name: patient-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/medicore_patient_db
+    username: postgres
+    password: Radhe
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+#Eureka Configuration
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

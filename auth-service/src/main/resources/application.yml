@@ -1,0 +1,39 @@
+
+#Server Configuration
+server:
+  port: 8081
+
+
+#Spring Configuration
+spring:
+  application:
+    name: auth-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/medicore_auth_db
+    username: postgres
+    password: Radhe
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+#Eureka Configuration
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#JWT Configuration
+jwt:
+  secret-key: 7fK9xQ2mV8rT4nL6pZ3wY5cH1sD9aB7eJ2uN6qR8vX4kM3tP5
+
+
+#Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
